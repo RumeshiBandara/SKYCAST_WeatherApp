@@ -43,5 +43,11 @@ function updateUI(data) {
     document.getElementById('uv-index').innerText = data.current.uv;
 
     document.getElementById('wind-speed').innerText = `${data.current.wind_kph} km/h`;
+    document.getElementById('pressure').innerText = `${data.current.pressure_mb} mb`;
+    document.getElementById('visibility').innerText = `${data.current.vis_km} km`;
+
+    const hourlyContainer = document.getElementById('hourly-container');
+    hourlyContainer.innerHTML = '';
+            
 
 }
