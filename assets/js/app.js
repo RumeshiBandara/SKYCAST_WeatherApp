@@ -48,6 +48,19 @@ function updateUI(data) {
 
     const hourlyContainer = document.getElementById('hourly-container');
     hourlyContainer.innerHTML = '';
+
+    const hours = data.forecast.forecastday[0].hour;
+            hours.slice(new Date().getHours(), new Date().getHours() + 12).forEach(hour => {
+                const time = hour.time.split(' ')[1];
+                hourlyContainer.innerHTML += `
+                    <div class="min-w-[110px] bg-white p-4 rounded-2xl text-center forecast-card border border-gray-100 shadow-sm">
+                        <p class="text-sm font-semibold text-gray-500">${time}</p>
+                        <img src="https:${hour.condition.icon}" class="w-12 h-12 mx-auto my-2" alt="icon">
+                        <p class="text-lg font-bold text-primary">${Math.round(hour.temp_c)}°</p>
+                        <p class="text-[10px] text-gray-400 uppercase">${hour.condition.text}</p>
+                    </div>
+                `;
+            });
             
 
 }
