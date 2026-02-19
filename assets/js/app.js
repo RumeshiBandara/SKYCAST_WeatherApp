@@ -82,3 +82,6 @@ function updateUI(data) {
 function showLoader(show) {
     loader.classList.toggle('hidden', !show);
 }
+ searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getWeatherData();
+});
