@@ -61,6 +61,21 @@ function updateUI(data) {
                     </div>
                 `;
             });
+
+     const dailyGrid = document.getElementById('daily-grid');
+            dailyGrid.innerHTML = '';
+            
+            data.forecast.forecastday.forEach(day => {
+                const dayName = new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' });
+                dailyGrid.innerHTML += `
+                    <div class="bg-white p-5 rounded-2xl text-center forecast-card border border-gray-100 shadow-md">
+                        <p class="font-bold text-primary">${dayName}</p>
+                        <img src="https:${day.day.condition.icon}" class="w-14 h-14 mx-auto my-2" alt="icon">
+                        <p class="text-xs text-gray-500 mb-2 h-8 flex items-center justify-center">${day.day.condition.text}</p>
+                        <p class="text-xl font-bold text-primary">${Math.round(day.day.avgtemp_c)}°</p>
+                    </div>
+                `;
+            });
             
 
 }
