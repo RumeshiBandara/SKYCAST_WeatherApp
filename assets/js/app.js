@@ -26,3 +26,22 @@ async function getWeatherData() {
 
 
 }
+
+function updateUI(data) {
+    document.getElementById('city-name').innerText = data.location.name;
+    document.getElementById('country-name').innerText = data.location.country;
+    document.getElementById('current-date').innerText = new Date(data.location.localtime).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+    document.getElementById('last-updated').innerText = `Last updated: ${data.current.last_updated}`;
+
+    document.getElementById('main-icon').src = `https:${data.current.condition.icon.replace('64x64', '128x128')}`;
+    document.getElementById('condition-text').innerText = data.current.condition.text;
+
+    document.getElementById('temp-c').innerText = `${Math.round(data.current.temp_c)}°C`;
+    document.getElementById('temp-f').innerText = `${Math.round(data.current.temp_f)}°F`;
+    document.getElementById('feels-like').innerText = `${Math.round(data.current.feelslike_c)}°C`;
+    document.getElementById('humidity').innerText = `${data.current.humidity}%`;
+    document.getElementById('uv-index').innerText = data.current.uv;
+
+    document.getElementById('wind-speed').innerText = `${data.current.wind_kph} km/h`;
+
+}
