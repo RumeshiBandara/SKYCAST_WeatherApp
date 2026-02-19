@@ -85,3 +85,5 @@ function showLoader(show) {
  searchInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') getWeatherData();
 });
+
+ window.onload = getWeatherData;
